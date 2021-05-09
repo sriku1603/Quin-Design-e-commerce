@@ -1,0 +1,20 @@
+.custom-dropdown-btn {
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+.font-size-large {
+    font-size: x-large;
+}
+
+.quantity-col {
+    max-width: 6rem;
+}
+
+.scroll-section {
+    max-height: 60vh;
+    overflow-y: auto;
+}

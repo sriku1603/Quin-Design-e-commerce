@@ -1,0 +1,126 @@
+<div class="row mx-auto">
+    <div class="col-12 my-3">
+        <button class="btn btn-info pull-right" (click)="addProduct()">Add Product</button>
+    </div>
+    <div class="col-12 my-3 text-center scroll-section">
+        <ng-container *ngIf="displayedProducts.length > 0; else noData">
+            <table class="table table-striped m-auto">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Availability</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" class="quantity-col">Quantity</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of displayedProducts; let i = index">
+                        <td>
+                            <ng-container *ngIf="item.image">
+                                <img [src]="item.image" class="rounded-circle" height="45" width="45" />
+                            </ng-container>
+                            <ng-container *ngIf="!item.image">
+                                <div class="rounded-circle" style="height: 45px; width: 45px;">#</div>
+                            </ng-container>
+                        </td>
+                        <td class="align-vertical-middle">{{item.name}}</td>
+                        <td class="font-weight-six-fifty align-vertical-middle">
+                            <span *ngIf="item.available" class="text-success">
+                                Available
+                            </span>
+                            <span *ngIf="!item.available" class="text-danger">
+                                {{item.available}}
+                            </span>
+                        </td>
+                        <td class="align-vertical-middle">{{item.price}} $</td>
+                        <td class="quantity-col align-vertical-middle">
+                            <input type="number" class="form-control w-100" [(ngModel)]="item.quantity" min="0"
+                                placeholder="Quantity" (change)="cartOperation('add', item)" />
+                        </td>
+                        <td class="align-vertical-middle">
+                            <i class="fas fa-2x fa-trash text-danger crsr-hand" (click)="deleteProduct(item)"
+                                title="Delete Product"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+        <ng-template #noData>
+            <h4 class="text-muted">No Data Found.
+                <a href="javascript:void(0)" (click)="addProduct()" class="text-primary">Click here </a>
+                to add a product
+            </h4>
+        </ng-template>
+    </div>
+    <div class="col-12" *ngIf="displayedProducts.length > 0">
+        <div class="row mr-3 pull-right">
+            <label class="text-muted">Items per page: </label>
+            <div ngbDropdown [autoClose]="true" class="mx-2">
+                <button class="btn custom-dropdown-btn py-0" id="dropdownConfig"
+                    ngbDropdownToggle>{{itemsPerPage}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+                    <button ngbDropdownItem *ngFor="let size of pageSize"
+                        (click)="itemsPerPage = size">{{size}}</button>
+                </div>
+            </div>
+            <i class="fas fa-x fa-angle-left font-size-large ml-3 mr-5 crsr-hand"
+                [ngClass]="{'text-muted': pageNum === 1}" (click)="changePageNum('increment')"></i>
+            <i class="fas fa-x fa-angle-right font-size-large crsr-hand"></i>
+        </div>
+    </div>
+</div>
+
+<ng-template #deleteProductModal>
+    <div class="modal-header">
+        <h4>Delete Product</h4>
+        <button type="button" class="close" aria-describedby="modal-title" (click)="deleteProductModalRef.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row mx-auto">
+            <div class="col-12">
+                Are you sure you want to delete the product?
+            </div>
+            <div class="col-12 pull-right">
+                <button class="btn btn-danger" (click)="deleteProductModalRef.close('success')">Yes</button>
+                <button class="btn btn-success" (click)="deleteProductModalRef.close('cancel')">No</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+
+<ng-template #addProductModal>
+    <div class="modal-header">
+        <h4>Add Product</h4>
+        <button type="button" class="close" aria-describedby="modal-title" (click)="addProductModalRef.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row mx-auto">
+            <div class="col-12">
+                <label class="font-weight-bold">Product Name: <span class="text-danger">*</span> </label>
+                <input type="text" [(ngModel)]="newProduct['name']" class="form-control w-100"
+                    placeholder="Product Name" />
+            </div>
+            <div class="col-12">
+                <label class="font-weight-bold">Product Price: (in $) <span class="text-danger">*</span> </label>
+                <input type="number" [(ngModel)]="newProduct['price']" class="form-control w-100"
+                    placeholder="Product Price" />
+            </div>
+            <div class="col-12">
+                <label class="font-weight-bold">Product Image: </label>
+                <input type="file" class="form-control w-100" (change)="fileChanged($event)" />
+            </div>
+            <div class="col-12 my-3">
+                <small class="text-muted font-italic"><span class="text-danger">*</span> denotes mandatory
+                    fields</small>
+                <button class="btn btn-success pull-right" (click)="addProductModalRef.close('success')">Submit</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

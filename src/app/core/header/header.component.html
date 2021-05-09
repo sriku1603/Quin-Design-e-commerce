@@ -1,0 +1,77 @@
+<div class="header-section h-100 w-100">
+  <div class="row mx-auto">
+    <div class="col-5">
+      <h3>E-Commerce</h3>
+    </div>
+    <div class="col-7">
+      <div class="row mx-auto pull-right">
+        <div class="col-10 pull-right pt-1">
+          <div class="row mx-auto">
+            <div class="col-12 px-0">
+              <h5 class="font-weight-bold mb-0">Hello, {{userInfo?.mail}}</h5>
+            </div>
+            <div class="col-12 px-0 text-white">
+              <small><a href="javascript:void(0)" class="text-white text-left" (click)="logOutUser()">Logout</a></small>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 px-2">
+          <div ngbDropdown class="d-inline-block" [autoClose]="true">
+            <i class="fas fa-2x text-white fa-shopping-cart" ngbDropdownToggle></i>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <div class="row mx-auto">
+                <ng-container *ngIf="itemsInCart.length > 0; else noData">
+                  <div class="col-12 border-bottom px-0" *ngFor="let item of itemsInCart">
+                    <div class="row mx-auto py-2">
+                      <div class="col-3 pr-0">
+                        <img [src]="item.image" class="rounded-circle" height="40" width="40" />
+                      </div>
+                      <div class="col-5 my-auto px-1 text-truncate font-weight-bold">
+                        {{item?.name}}
+                      </div>
+                      <div class="col-2 px-1 my-auto font-weight-bold">
+                        x{{item?.quantity}}
+                      </div>
+                      <div class="col-1 px-1 font-weight-bold my-auto">
+                        {{item?.price * item?.quantity}}
+                      </div>
+                      <div class="col-1 px-1 my-auto">
+                        <i class="fas fa-trash text-danger" (click)="removeFromCart(item)" title="Remove from cart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-template #noData>
+                  <div class="col-12 text-center">
+                    <h6>No Data</h6>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <small>
+            <div class="bg-danger cart-count px-2 py-0">{{itemsInCart.length}}</div>
+          </small>
+          <ng-template #popContent>
+            <div class="row">
+              <div class="col-3 py-2">
+                <!-- img -->
+              </div>
+              <div class="col-5 text-truncate font-weight-bold">
+                Product Name
+              </div>
+              <div class="col-2 text-truncate font-weight-bold">
+                Quantity
+              </div>
+              <div class="col-2 text-truncate font-weight-bold">
+                Price
+              </div>
+              <div class="col-12 border-bottom">
+                srikanth
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>

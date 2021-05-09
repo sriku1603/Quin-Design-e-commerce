@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~angular-notifier/styles.css";
+
+/* @import "~@ng-select/ng-select/themes/default.theme.css"; */
+
+@font-face {
+    font-family: AkkuratProRegular;
+    src: url("./assets/css/AKKRG_PRO_1_NS.OTF") format("truetype");
+}
+
+@font-face {
+    font-family: AkkuratProBold;
+    src: url("./assets/css/AKKBD_PRO_1_NS.OTF") format("truetype");
+}
+
+body {
+    /* background-color: #4dccc6;
+    background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%); */
+    background-color: #ffcfdf;
+background-image: linear-gradient(315deg, #ffcfdf 0%, #b0f3f1 74%);
+}
+
+text {
+    fill: black !important;
+    text-anchor: middle;
+}
+
+html, body {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0px !important;
+}
+
+.pull-right {
+    float: right;
+    text-align: right;
+}
+
+.font-weight-six-fifty {
+    font-weight: 650;
+}
+
+.crsr-hand {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    transform: translate(-250px, 24px);
+    min-width: 30rem;
+    font-size: 1.2rem;
+    max-height: 30rem;
+    overflow-y: auto;
+}
+
+.table {
+    width: 80% !important;
+}
+
+.align-vertical-middle {
+    vertical-align: middle !important;
+}
+
+@media (max-width: 450px) {
+    html {
+        font-size: 8px !important;
+    }
+}
+
+@media (max-height: 800px) {
+    html {
+        font-size: 12px !important;
+    }
+}
