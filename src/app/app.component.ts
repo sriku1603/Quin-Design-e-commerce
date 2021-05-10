@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { LocalStorageService } from './shared/local-storage.service';
 import { Router, ResolveEnd, Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart } from '@angular/router';
 
@@ -19,5 +19,10 @@ export class AppComponent {
   }
 
   ngOnInit() {}
+
+  @HostListener('window:beforeunload', ['$event'])
+   onWindowClose(event: any): void {
+    localStorage.removeItem('userInfo');
+  }
 
 }
