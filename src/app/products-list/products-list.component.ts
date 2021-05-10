@@ -22,142 +22,7 @@ export class ProductsListComponent implements OnInit {
     private sharedService: SharedService) { }
 
   ngOnInit() {
-    this.originalProductList = [
-      {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      },
-      {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      }, {
-        "name": "Test",
-        "price": 40,
-        "available": true
-      },
-    ]
+    this.originalProductList = [];
     this.sharedService.getCartData().subscribe((res: any) => {
       if (res.type === 'remove') {
         let obj = this.originalProductList.find(x => x.id === res.obj.id);
@@ -165,7 +30,7 @@ export class ProductsListComponent implements OnInit {
       }
     })
     if (this.localService.getStorageData('products')) {
-      // this.originalProductList = this.localService.getStorageData('products');
+      this.originalProductList = this.localService.getStorageData('products');
       this.originalProductList = this.originalProductList.map((x, index) => {
         return {
           ...x,
