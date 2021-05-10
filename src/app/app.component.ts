@@ -10,10 +10,10 @@ import { Router, ResolveEnd, Event, NavigationCancel, NavigationEnd, NavigationE
 export class AppComponent {
   showHead = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private localService: LocalStorageService) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof ResolveEnd) {
-        this.showHead = !(event['url'] === '/login');
+        this.showHead = this.localService.getStorageData('userInfo') ? true : false;
       }
     });
   }

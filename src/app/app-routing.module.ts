@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './core/services/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'products-list',
-    component: ProductsListComponent
+    component: ProductsListComponent,
+    canActivate: [AuthGuard]
   }
   // {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)}
 ];

@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="col-2 px-2">
-          <div ngbDropdown class="d-inline-block" [autoClose]="true">
+          <div ngbDropdown class="d-inline-block" [autoClose]="true" id="cart">
             <i class="fas fa-2x text-white fa-shopping-cart" ngbDropdownToggle></i>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <div class="row mx-auto">
@@ -43,7 +43,7 @@
                 </ng-container>
                 <ng-template #noData>
                   <div class="col-12 text-center">
-                    <h6>No Data</h6>
+                    <h6>No Items in Cart</h6>
                   </div>
                 </ng-template>
               </div>
@@ -52,25 +52,6 @@
           <small>
             <div class="bg-danger cart-count px-2 py-0">{{itemsInCart.length}}</div>
           </small>
-          <ng-template #popContent>
-            <div class="row">
-              <div class="col-3 py-2">
-                <!-- img -->
-              </div>
-              <div class="col-5 text-truncate font-weight-bold">
-                Product Name
-              </div>
-              <div class="col-2 text-truncate font-weight-bold">
-                Quantity
-              </div>
-              <div class="col-2 text-truncate font-weight-bold">
-                Price
-              </div>
-              <div class="col-12 border-bottom">
-                srikanth
-              </div>
-            </div>
-          </ng-template>
         </div>
       </div>
     </div>

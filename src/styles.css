@@ -61,6 +61,10 @@ html, body {
     vertical-align: middle !important;
 }
 
+#cart .dropdown-toggle::after {
+    display: none;
+}
+
 @media (max-width: 450px) {
     html {
         font-size: 8px !important;
